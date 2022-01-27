@@ -33,11 +33,11 @@ async function run() {
         });
 
         // GET API (for orders)
-        app.get('/orders', async(req, res) => {
-            const cursor = ordersCollection.find({});
-            const orders = await cursor.toArray() ;
-            res.send(orders) ;
-        });
+        // app.get('/orders', async(req, res) => {
+        //     const cursor = ordersCollection.find({});
+        //     const orders = await cursor.toArray() ;
+        //     res.send(orders) ;
+        // });
 
         // GET Single Services
         app.get('/services/:id', async(req, res) => {
@@ -66,10 +66,10 @@ async function run() {
         });
 
         // DELETE API 
-        app.delete('/orders/:id', async(req,res)=>{
+        app.delete('/services/:id', async(req,res)=>{
             const id = req.params.id ;
             const query = {_id: ObjectId(id) } ;
-            const result = await ordersCollection.deleteOne(query) ;
+            const result = await servicesCollection.deleteOne(query) ;
             res.json(result) 
         })
     }
